@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+    <div class="course-inner">
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_function"><i class="layui-icon layui-icon-left"></i>C 函数</a>
+            <a class="nav-font-next" href="/page_arr">C 数组<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+        <div class="course-main">
+            <div>
+                <h1>C <span class="course-main-h1">作用域规则</span></h1>
+                <p>任何一种编程中，作用域是程序中定义的变量所存在的区域，超过该区域变量就不能被访问。C 语言中有三个地方可以声明变量：</p>
+                <ol>
+                    <li>在函数或块内部的 <b>局部</b>变量</li>
+                    <li>在所有函数外部的 <b>全局</b>变量</li>
+                    <li>在 <b>形式</b>参数的函数参数定义中</li>
+                </ol>
+                <p>让我们来看看什么是 <b>局部</b>变量、<b>全局</b>变量和 <b>形式</b>参数。</p>
+                <hr class="layui-bg-gray">
+
+                <h2>局部变量</h2>
+                <p>在某个函数或块的内部声明的变量称为局部变量。它们只能被该函数或该代码块内部的语句使用。局部变量在函数外部是不可知的。下面是使用局部变量的实例。在这里，所有的变量 a、b 和 c 是 main() 函数的局部变量。</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>int <span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;/* 局部变量声明 */</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">a</span>,&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">c</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;/* 实际初始化 */</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">10</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">b</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">20</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;+&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"value of a = %d, b = %d and c = %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">a</span>,&nbsp;&nbsp;<span class="code-blue">b</span>,&nbsp;&nbsp;<span class="code-blue">c</span>);</p>
+                        <p><span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <hr class="layui-bg-gray">
+
+                <h2>全局变量</h2>
+                <p>全局变量是定义在函数外部，通常是在程序的顶部。全局变量在整个程序生命周期内都是有效的，在任意的函数内部能访问全局变量。</p>
+                <p>全局变量可以被任何函数访问。也就是说，全局变量在声明后整个程序中都是可用的。</p>
+                <p>在程序中，局部变量和全局变量的名称可以相同，但是在函数内，如果两个名字相同，会使用局部变量值，全局变量不会被使用。下面是一个实例：</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>int <span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>/* 全局变量声明 */</p>
+                        <p>int&nbsp;&nbsp;<span class="code-blue">g</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">20</span>;</p>
+                        <p>int&nbsp;&nbsp;<span class="code-blue">main</span>&nbsp;&nbsp;()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;/* 局部变量声明 */</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int<span class="code-blue">g</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">10</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"value of g = %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">g</span>);</p>
+                        <p><span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p>value of g = 10</p>
+                    </div>
+                </blockquote>
+                <hr class="layui-bg-gray">
+
+                <h2>形式参数</h2>
+                <p>函数的参数，形式参数，被当作该函数内的局部变量，如果与全局变量同名它们会优先使用。</p>
+                <p><strong>全局变量与局部变量在内存中的区别:</strong></p>
+                <ul>
+                    <li>全局变量保存在内存的全局存储区中，占用静态的存储单元；</li>
+                    <li>局部变量保存在栈中，只有在所在函数被调用时才动态地为变量分配存储单元。</li>
+                </ul>
+                <p>更多内容可参考：<a href="https://www.runoob.com/w3cnote/cpp-static-usage.html">C/C++ 中 static 的用法全局变量与局部变量</a></p>
+                <hr class="layui-bg-gray">
+
+                <h2>初始化局部变量和全局变量</h2>
+                <p>当局部变量被定义时，系统不会对其初始化，您必须自行对其初始化。定义全局变量时，系统会自动对其初始化</p>
+                <p>正确地初始化变量是一个良好的编程习惯，否则有时候程序可能会产生意想不到的结果，因为未初始化的变量会导致一些在内存位置中已经可用的垃圾值。</p>
+            </div>
+        </div>
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_function"><i class="layui-icon layui-icon-left"></i>C 函数</a>
+            <a class="nav-font-next" href="/page_arr">C 数组<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+    </div>
+</div>
+    <!--        笔记栏目-->
+    <div class="note" id="14">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

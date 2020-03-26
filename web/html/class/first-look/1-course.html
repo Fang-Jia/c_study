@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-next" href="/page_intro">C 简介 <i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">语言教程</span></h1>
+                    <div class=" course-main-top">
+                        <img src="https://www.runoob.com/wp-content/uploads/2014/09/c-mini-logo.png" alt="">
+                        <p>C 语言是一种通用的、面向过程式的计算机程序设计语言。1972 年，为了移植与开发 UNIX 操作系统，丹尼斯·里奇在贝尔电话实验室设计开发了 C 语言。</p>
+                        <p>C 语言是一种广泛使用的计算机语言，它与 Java 编程语言一样普及，二者在现代软件程序员之间都得到广泛使用。</p>
+                        <p>当前最新的C语言标准为 C11 ，在它之前的C语言标准为 C99。</p>
+                    </div>
+                    <hr class="layui-bg-gray">
+
+                    <h2>谁适合阅读本教程？</h2>
+                    <p>本教程是专门为需要从零开始了解 C 语言的软件程序员打造的。本教程将让您对 C 语言有足够的认识，从而提升您自己的专业知识水平。</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>阅读本教程前，您需要了解的知识：</h2>
+                    <p>在开始学习本教程之前，您需要对计算机编程术语有基本的了解。对任何一种编程语言有基本的了解将有助于您理解 C 语言编程概念，并有助于加快您的学习进度。</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>编译/执行 C 程序</h2>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>/*  我的第一个 C 程序 */</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">" Hello, World! &nbsp;\n"</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <hr class="layui-bg-gray">
+
+                    <h2>实例解析：</h2>
+                    <ul>
+                        <li>所有的 C 语言程序都需要包含 main() 函数。 代码从 main() 函数开始执行。</li>
+                        <li>/* ... */ 用于注释说明。</li>
+                        <li>printf() 用于格式化输出到屏幕。printf() 函数在 "stdio.h" 头文件中声明。</li>
+                        <li>stdio.h 是一个头文件 (标准输入输出头文件) , #include 是一个预处理命令，用来引入头文件。 当编译器遇到 printf() 函数时，如果没有找到 stdio.h 头文件，会发生编译错误。</li>
+                        <li>return 0; 语句用于表示退出程序。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font" href="/page_intro">C 简介 <i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="1">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+<script src="../../../assets/layui/layui.js"></script>
+<script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+    <div class="course-inner">
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_operation"><i class="layui-icon layui-icon-left"></i>C 运算符</a>
+            <a class="nav-font-next" href="/page_loop">C 循环<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+        <div class="course-main">
+            <div>
+                <h1>C <span class="course-main-h1">判断</span></h1>
+                <p>判断结构要求程序员指定一个或多个要评估或测试的条件，以及条件为真时要执行的语句（必需的）和条件为假时要执行的语句（可选的）。</p>
+                <p>C 语言把任何 <b>非零</b>和<b>非空</b>的值假定为 <b>true</b>，把 <b>零</b>或 <b>null</b> 假定为 <b>false</b>。</p>
+                <p>下面是大多数编程语言中典型的判断结构的一般形式：</p>
+                <img src="https://www.runoob.com/wp-content/uploads/2015/12/if.png" alt="">
+                <hr class="layui-bg-gray">
+
+                <h2>判断语句</h2>
+                <p>C 语言提供了以下类型的判断语句。点击链接查看每个语句的细节。</p>
+                <table class="layui-table">
+                    <tbody>
+                    <tr>
+                        <th>语句</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>if 语句</td>
+                        <td>一个 <b>if 语句</b> 由一个布尔表达式后跟一个或多个语句组成。</td>
+                    </tr>
+                    <tr>
+                        <td>if...else 语句</td>
+                        <td>一个 <b>if 语句</b> 后可跟一个可选的 <b>else 语句</b>，else 语句在布尔表达式为假时执行。</td>
+                    </tr>
+                    <tr>
+                        <td>嵌套 if 语句</td>
+                        <td>您可以在一个 <b>if</b> 或 <b>else if</b> 语句内使用另一个 <b>if</b> 或 <b>else if</b> 语句。</td>
+                    </tr>
+                    <tr>
+                        <td>switch 语句</td>
+                        <td>一个 <b>switch</b> 语句允许测试一个变量等于多个值时的情况。</td>
+                    </tr>
+                    <tr>
+                        <td>嵌套 switch 语句</td>
+                        <td>您可以在一个 <b>switch</b> 语句内使用另一个 <b>switch </b> 语句。</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <h2>? : 运算符(三元运算符)</h2>
+                <p>我们已经在前面的章节中讲解了 <b>条件运算符 ? :</b>，可以用来替代 <b>if...else</b> 语句。它的一般形式如下：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p><span class="code-violet">Exp1&nbsp;&nbsp;?&nbsp;&nbsp;Exp2&nbsp;&nbsp;:&nbsp;&nbsp;Exp3;</span></p>
+                    </div>
+                </blockquote>
+                <p>其中，Exp1、Exp2 和 Exp3 是表达式。请注意，冒号的使用和位置。</p>
+                <p>? 表达式的值是由 Exp1 决定的。如果 Exp1 为真，则计算 Exp2 的值，结果即为整个 ? 表达式的值。如果 Exp1 为假，则计算 Exp3 的值，结果即为整个 ? 表达式的值。</p>
+                <p><img src="https://www.runoob.com/wp-content/uploads/2014/09/Conditional-Statement-in-C-Programming-Lanuage-Ternary-Operator.png" alt=""></p>
+                <h3>实例</h3>
+                <p>以下实例通过输入一个数字来判断它是否为奇数或偶数</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>int <span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">num</span>;</p>
+                        <p><span class="code-blue">&nbsp;&nbsp;&nbsp;&nbsp;printf</span>(<span class="code-brown">"输入一个数字 : "</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">scanf</span>(<span class="code-violet">"%d"</span>,&<span class="code-blue">num</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;(<span class="code-blue">num</span>%2==0)?<span class="code-blue">printf</span>(<span class="code-violet">"偶数"</span>):<span class="code-blue">printf</span>(<span class="code-violet">"奇数"</span>)</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+            </div>
+        </div>
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_operation"><i class="layui-icon layui-icon-left"></i>C 运算符</a>
+            <a class="nav-font-next" href="/page_loop">C 循环<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+    </div>
+</div>
+    <!--        笔记栏目-->
+    <div class="note" id="11">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

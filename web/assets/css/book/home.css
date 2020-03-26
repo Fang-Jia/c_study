@@ -1,0 +1,48 @@
+
+.nav{
+    margin-bottom: 40px;
+}
+.strategy-inner{
+    margin-left: 50px;
+    height: 250px;
+}
+.cart{
+    width: 90%;
+    height: 30%;
+}
+.strategy-inner:hover{
+    background-color: rgba(236,235,240,0.6);
+}
+
+.strategy h2{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333;
+}
+.strategy p{
+    font-size: 30px;
+    color: #ff9d00;
+    margin: 50px 0 0 20px;
+}
+.strategy img{
+    float: left;
+    width: 30%;
+    height: 100%;
+    margin-right: 10px;
+}
+.strategy .add{
+    margin: 20px 0 0 10px;
+}
+.checkBox{
+    float: right;
+    margin-top: 20px;
+}
+.checkBox i{
+    font-size: 20px;
+}
+#page{
+    text-align: right;
+    margin-right: 130px;
+}

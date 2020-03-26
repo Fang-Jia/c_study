@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="page" namespace="/" extends="struts-default">
+
+        <action name="page_*" class="pageAction" method="{1}">
+
+            <result name="main" type="redirect">index.jsp</result>
+            <result name="project" type="redirect">/html/project.jsp</result>
+            <result name="curriculum" type="redirect">/html/class/main.jsp</result>
+            <result name="skill" type="redirect">/html/skill.jsp</result>
+
+
+<!--            C语言初探栏目页面跳转-->
+            <result name="course">/html/class/first-look/1-course.html</result>
+            <result name="intro">/html/class/first-look/2-intro.html</result>
+            <result name="environment">/html/class/first-look/3-environment.html</result>
+            <result name="procedure">/html/class/first-look/4-procedure.html</result>
+            <result name="grammar">/html/class/first-look/5-grammar.html</result>
+
+<!--            C语言初级栏目页面跳转-->
+            <result name="data">/html/class/base/1-data.html</result>
+            <result name="variate">/html/class/base/2-variate.html</result>
+            <result name="constant">/html/class/base/3-constant.html</result>
+            <result name="save">/html/class/base/4-save.html</result>
+            <result name="operation">/html/class/base/5-operation.html</result>
+            <result name="judge">/html/class/base/6-judge.html</result>
+
+<!--            C语言进阶栏目页面跳转-->
+            <result name="loop">/html/class/advance/1-loop.html</result>
+            <result name="function">/html/class/advance/2-function.html</result>
+            <result name="scope">/html/class/advance/3-scope.html</result>
+            <result name="arr">/html/class/advance/4-arr.html</result>
+            <result name="enumPage">/html/class/advance/5-enumPage.html</result>
+            <result name="pointer">/html/class/advance/6-pointer.html</result>
+
+<!--            C语言中级栏目页面跳转-->
+            <result name="funPointer">/html/class/intermediate/1-funPointer.html</result>
+            <result name="str">/html/class/intermediate/2-str.html</result>
+            <result name="construction">/html/class/intermediate/3-construction.html</result>
+            <result name="share">/html/class/intermediate/4-share.html</result>
+            <result name="place">/html/class/intermediate/5-place.html</result>
+            <result name="typedef">/html/class/intermediate/6-typedef.html</result>
+
+<!--            C语言高级栏目页面跳转-->
+            <result name="input">/html/class/expert/1-input.html</result>
+            <result name="write">/html/class/expert/2-write.html</result>
+            <result name="pretreatment">/html/class/expert/3-pretreatment.html</result>
+            <result name="titleFont">/html/class/expert/4-titleFont.html</result>
+            <result name="convert">/html/class/expert/5-convert.html</result>
+            <result name="errConduct">/html/class/expert/6-errConduct.html</result>
+        </action>
+
+    </package>
+</struts>

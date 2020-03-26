@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+<!--    配置登录action（多实例）-->
+    <bean id="noteAction" class="com.wj.action.NoteAction" scope="prototype">
+        <property name="noteService" ref="noteService"/>
+    </bean>
+
+    <bean id="noteService" class="com.wj.service.NoteService" scope="prototype">
+        <property name="noteDao" ref="noteDaoImpl"/>
+    </bean>
+
+    <bean id="noteDaoImpl" class="com.wj.dao.impl.NoteDaoImpl" scope="prototype">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+</beans>

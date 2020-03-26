@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_funPointer"><i class="layui-icon layui-icon-left"></i>C 函数指针</a>
+                <a class="nav-font-next" href="/page_construction">C 结构体<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">字符串</span></h1>
+                    <p>在 C 语言中，字符串实际上是使用 <b>null</b> 字符 '\0' 终止的一维字符数组。因此，一个以 null 结尾的字符串，包含了组成字符串的字符。</p>
+                    <p>下面的声明和初始化创建了一个 "Hello" 字符串。由于在数组的末尾存储了空字符，所以字符数组的大小比单词 "Hello" 的字符数多一个。</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>char greeting[6] = {<span class="code-green">'H', 'e', 'l', 'l', 'o', '\0'</span>};</p>
+                        </div>
+                    </blockquote>
+                    <p>依据数组初始化规则，您可以把上面的语句写成以下语句：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>har greeting[] = "<span class="code-green">Hello</span>";</p>
+                        </div>
+                    </blockquote>
+                    <p>以下是 C/C++ 中定义的字符串的内存表示：</p>
+                    <img src="https://www.runoob.com/wp-content/uploads/2014/08/string_representation.jpg" alt="">
+                    <p>其实，您不需要把 <i>null</i> 字符放在字符串常量的末尾。C 编译器会在初始化数组时，自动把 '\0' 放在字符串的末尾。让我们尝试输出上面的字符串：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">greeting</span>[<span class="code-violet">6</span>]&nbsp;&nbsp;=&nbsp;&nbsp;{<span class="code-blue">'H', 'e', 'l', 'l', 'o', '\0'</span>};</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"Greeting message: %s\n"</span>, <span class="code-blue">greeting</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p><span class="code-violet">Greeting</span> message: <span class="code-violet">Hello</span></p>
+                        </div>
+                    </blockquote>
+                    <p>C 中有大量操作字符串的函数：</p>
+                    <table class="layui-table">
+                        <tbody>
+                        <tr>
+                            <th>序号</th>
+                            <th>函数 & 目的</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><b>strcpy(s1, s2);</b><br>复制字符串 s2 到字符串 s1。</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><b>strcat(s1, s2);</b><br>连接字符串 s2 到字符串 s1 的末尾。</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><b>strlen(s1);</b><br>返回字符串 s1 的长度。</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><b>strcmp(s1, s2);</b><br>如果 s1 和 s2 是相同的，则返回 0；如果 s1 < s2 则返回小于 0；如果 s1>s2 则返回大于 0。</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><b>strchr(s1, ch);</b><br>返回一个指针，指向字符串 s1 中字符 ch 的第一次出现的位置。</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><b>strstr(s1, s2);</b><br>返回一个指针，指向字符串 s1 中字符串 s2 的第一次出现的位置。</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_funPointer"><i class="layui-icon layui-icon-left"></i>C 函数指针</a>
+                <a class="nav-font-next" href="/page_construction">C 结构体<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="19">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

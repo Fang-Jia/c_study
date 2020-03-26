@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_share"><i class="layui-icon layui-icon-left"></i>C 共用体</a>
+                <a class="nav-font-next" href="/page_typedef">C typedef<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">位域</span></h1>
+                    <p>如果程序的结构中包含多个开关量，只有 TRUE/FALSE 变量，如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int widthValidated;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int heightValidated ;</p>
+                            <p>} status</p>
+                        </div>
+                    </blockquote>
+                    <p>这种结构需要 8 字节的内存空间，但在实际上，在每个变量中，我们只存储 0 或 1。在这种情况下，C 语言提供了一种更好的利用内存空间的方式。如果您在结构内使用这样的变量，您可以定义变量的宽度来告诉编译器，您将只使用这些字节。例如，上面的结构可以重写成：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int widthValidated : 1;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int heightValidated  : 1;</p>
+                            <p>} status</p>
+                        </div>
+                    </blockquote>
+                    <p>现在，上面的结构中，status 变量将占用 4 个字节的内存空间，但是只有 2 位被用来存储值。如果您用了 32 个变量，每一个变量宽度为 1 位，那么 status 结构将使用 4 个字节，但只要您再多用一个变量，如果使用了 33 个变量，那么它将分配内存的下一段来存储第 33 个变量，这个时候就开始使用 8 个字节。让我们看看下面的实例来理解这个概念：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>#include &nbsp;<span class="code-brown">&lt;string.h></span></p>
+                            <p>/* 定义简单的结构 */</p>
+                            <p>struct</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int widthValidated;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int heightValidated ;</p>
+                            <p>} status1</p>
+                            <p>/* 定义位域结构 */</p>
+                            <p>struct</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int widthValidated : 1;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int heightValidated  : 1;</p>
+                            <p>} status1</p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"Memory size occupied by status1 : %d\n"</span>, <span class="code-green">sizeof</span>(<span class="code-blue">status1</span>));</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"Memory size occupied by status2 : %d\n"</span>, <span class="code-green">sizeof</span>(<span class="code-blue">status2</span>));</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>Memory size occupied by status1 : 8</p>
+                            <p>Memory size occupied by status2 : 4</p>
+                        </div>
+                    </blockquote>
+                    <hr class="layui-bg-gray">
+
+                    <h2>位域声明</h2>
+                    <p>在结构内声明位域的形式如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;type [member_name] : width ;</p>
+                            <p>};</p>
+                        </div>
+                    </blockquote>
+                    <p>下面是有关位域中变量元素的描述：</p>
+                    <table class="layui-table">
+                        <tbody>
+                        <tr>
+                            <th>元素</th>
+                            <th>描述</th>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td>只能为 int(整型)，unsigned int(无符号整型)，signed int(有符号整型) 三种类型，决定了如何解释位域的值。</td>
+                        </tr>
+                        <tr>
+                            <td>member_name</td>
+                            <td>位域的名称。</td>
+                        </tr>
+                        <tr>
+                            <td>width</td>
+                            <td>位域中位的数量。宽度必须小于或等于指定类型的位宽度。</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>带有预定义宽度的变量被称为<b>位域</b>。位域可以存储多于 1 位的数，例如，需要一个变量来存储从 0 到 7 的值，您可以定义一个宽度为 3 位的位域，如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;unsigned int age : 3;</p>
+                            <p>} Age;</p>
+                        </div>
+                    </blockquote>
+
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_share"><i class="layui-icon layui-icon-left"></i>C 共用体</a>
+                <a class="nav-font-next" href="/page_typedef">C typedef<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="22">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

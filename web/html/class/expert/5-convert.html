@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_titleFont"><i class="layui-icon layui-icon-left"></i>C 头文件</a>
+                <a class="nav-font-next" href="/page_errConduct">C 错误处理<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">强制类型转换</span></h1>
+                    <p>强制类型转换是把变量从一种类型转换为另一种数据类型。例如，如果您想存储一个 long 类型的值到一个简单的整型中，您需要把 long 类型强制转换为 int 类型。您可以使用<b>强制类型转换运算符</b>来把值显式地从一种类型转换为另一种类型，如下所示：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>(type_name) expression</p>
+                        </div>
+                    </blockquote>
+                    <p>请看下面的实例，使用强制类型转换运算符把一个整数变量除以另一个整数变量，得到一个浮点数：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">sum</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">17</span>,&nbsp;&nbsp;<span class="code-blue">count</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">5</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;double&nbsp;&nbsp;<span class="code-blue">mean</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">mean</span>&nbsp;&nbsp;=&nbsp;&nbsp;(double)&nbsp;&nbsp;sum / <span class="code-blue">count</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"Value of mean : %f\n"</span>, <span class="code-blue">mean</span>);</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>Value of mean : 3.400000</p>
+                        </div>
+                    </blockquote>
+                    <p>这里要注意的是强制类型转换运算符的优先级大于除法，因此 <b>sum</b> 的值首先被转换为 <b>double</b> 型，然后除以 count，得到一个类型为 double 的值。</p>
+                    <p>类型转换可以是隐式的，由编译器自动执行，也可以是显式的，通过使用<b>强制类型转换运算符</b>来指定。在编程时，有需要类型转换的时候都用上强制类型转换运算符，是一种良好的编程习惯。</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>整数提升</h2>
+                    <p>整数提升是指把小于 <b>int</b> 或 <b>unsigned int</b> 的整数类型转换为 <b>int</b> 或 <b>unsigned int</b> 的过程。请看下面的实例，在 int 中添加一个字符：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">i</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">17</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;'<span class="code-blue">c</span>';&nbsp;&nbsp;/* ascii 值是 99 */</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">sum</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">sum</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">i</span>&nbsp;&nbsp;+&nbsp;&nbsp;<span class="code-blue">c</span></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"Value of sum : %d\n"</span>, <span class="code-blue">sum</span>);</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>Value of sum : 116</p>
+                        </div>
+                    </blockquote>
+                    <p>在这里，sum 的值为 116，因为编译器进行了整数提升，在执行实际加法运算时，把 'c' 的值转换为对应的 ascii 值。</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>常用的算术转换</h2>
+                    <p><b>常用的算术转换</b>是隐式地把值强制转换为相同的类型。编译器首先执行<b>整数提升</b>，如果操作数类型不同，则它们会被转换为下列层次中出现的最高层次的类型：</p>
+                    <img src="https://www.runoob.com/wp-content/uploads/2014/08/usual_arithmetic_conversion.png" alt="Usual Arithmetic Conversion">
+                    <p>常用的算术转换不适用于赋值运算符、逻辑运算符 &amp;&amp; 和 ||。</p>
+
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_titleFont"><i class="layui-icon layui-icon-left"></i>C 头文件</a>
+                <a class="nav-font-next" href="/page_errConduct">C 错误处理<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="28">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

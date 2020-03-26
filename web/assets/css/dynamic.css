@@ -1,0 +1,74 @@
+.dynamic{
+    background: #eeeeee;
+    padding-bottom: 10px;
+}
+.dynamic-inner{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.dynamic-img{
+    position: absolute;
+    top: -35px;
+    left: 35%;
+    margin: 40px auto;
+}
+.dynamic-inner .main{
+    padding-top: 140px;
+    position: relative;
+}
+
+/*===================================================================================*/
+.main .con{
+    overflow: hidden;
+    padding: 50px 10px 0;
+    width: 1090px;
+    margin: 0 auto;
+}
+.main p{
+    font-size: 14px;
+    color: #01AAED;
+    line-height: 24px;
+}
+/*左侧文字*/
+.main .fl{
+    float: left;
+    margin-left: 20px;
+}
+.main .fl p{
+    text-align: right;
+    margin: 0;
+}
+.main .fl p span{
+    float: right;
+    padding-left: 5px;
+}
+/*中间图片*/
+.main .cen{
+    width: 450px;
+    float: left;
+    margin: 0 20px 0 90px;
+}
+.main .cen img{
+    margin: 0 auto;
+    display: block;
+}
+.main .cen img:hover{
+    transition: all 0.6s;
+    transform: scale(1.1);
+}
+/*右侧文字*/
+.main .fr{
+    float: right;
+    margin-right: 10px;
+}
+.main .fr p{
+    font-size: 14px;
+    color: #01AAED;
+    line-height: 24px;
+}
+
+/*=====================================================================================*/
+.dynamic .main .con2{
+    padding: 30px 0;
+}

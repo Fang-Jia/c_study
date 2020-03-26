@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+    <div class="course-inner">
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_convert"><i class="layui-icon layui-icon-left"></i>C 强制类型转换</a>
+        </div>
+        <div class="course-main">
+            <div>
+                <h1>C <span class="course-main-h1">错误处理</span></h1>
+                <p>C 语言不提供对错误处理的直接支持，但是作为一种系统编程语言，它以返回值的形式允许您访问底层数据。在发生错误时，大多数的 C 或 UNIX 函数调用返回 1 或 NULL，同时会设置一个错误代码 <b>errno</b>，该错误代码是全局变量，表示在函数调用期间发生了错误。您可以在 errno.h 头文件中找到各种各样的错误代码。</p>
+                <p>所以，C 程序员可以通过检查返回值，然后根据返回值决定采取哪种适当的动作。开发人员应该在程序初始化时，把 errno 设置为 0，这是一种良好的编程习惯。0 值表示程序中没有错误。</p>
+                <hr class="layui-bg-gray">
+
+                <h2>errno、perror() 和 strerror()</h2>
+                <p>C 语言提供了 <b>perror()</b> 和 <b>strerror()</b> 函数来显示与 <b>errno</b> 相关的文本消息。</p>
+                <ul>
+                    <li><b>perror()</b> 函数显示您传给它的字符串，后跟一个冒号、一个空格和当前 errno 值的文本表示形式。</li>
+                    <li><b>strerror()</b> 函数，返回一个指针，指针指向当前 errno 值的文本表示形式。</li>
+                </ul>
+                <p>让我们来模拟一种错误情况，尝试打开一个不存在的文件。您可以使用多种方式来输出错误消息，在这里我们使用函数来演示用法。另外有一点需要注意，您应该使用 <b>stderr</b> 文件流来输出所有的错误。</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>#include &nbsp;<span class="code-brown">&lt;errno.h></span></p>
+                        <p>#include &nbsp;<span class="code-brown">&lt;string.h></span></p>
+                        <p>extern int <span class="code-blue">errno</span>;</p>
+                        <p>int <span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">FILE</span>&nbsp;&nbsp;*&nbsp;&nbsp;<span class="code-blue">pf</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">errnum</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">pf</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">fopen</span>(<span class="code-violet">"unexist.txt", "rb"</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">if</span>&nbsp;&nbsp;(<span class="code-blue">pf</span>&nbsp;&nbsp;==&nbsp;&nbsp;NULL)</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">errnum</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">errno</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">fprintf</span>(<span class="code-blue">stderr</span>, <span class="code-violet">"错误号: %d\n"</span>, <span class="code-blue">errno</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">perror</span>(<span class="code-violet">"通过 perror 输出错误"</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">fprintf</span>(<span class="code-blue">stderr</span>, <span class="code-violet">"打开文件错误: %s\n"</span>, <span class="code-blue">strerror( errnum )</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">else</span></p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">fclose</span>(<span class="code-blue">pf</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p>错误号: 2</p>
+                        <p>通过 perror 输出错误: No such file or directory</p>
+                        <p>打开文件错误: No such file or directory</p>
+                    </div>
+                </blockquote>
+                <hr class="layui-bg-gray">
+
+                <h2>被零除的错误</h2>
+                <p>在进行除法运算时，如果不检查除数是否为零，则会导致一个运行时错误。</p>
+                <p>为了避免这种情况发生，下面的代码在进行除法运算前会先检查除数是否为零：</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdlib.h></span></p>
+                        <p><span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">dividend</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">20</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">divisor</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">0</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">quotient</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">if</span>(&nbsp;&nbsp;divisor&nbsp;&nbsp;==&nbsp;&nbsp;0){</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">fprintf</span>(<span class="code-blue">stderr</span>, <span class="code-violet">"除数为 0 退出运行...\n"</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">exit</span>(<span class="code-violet">-1</span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">quotient</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">dividend</span> / <span class="code-blue">divisor</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">fprintf</span>(<span class="code-blue">stderr</span>, <span class="code-violet">"quotient 变量的值为 : %d\n"</span>, <span class="code-blue">quotient </span>);</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">exit</span>(<span class="code-violet">0</span>);</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p>除数为 0 退出运行...</p>
+                    </div>
+                </blockquote>
+            </div>
+        </div>
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_convert"><i class="layui-icon layui-icon-left"></i>C 强制类型转换</a>
+        </div>
+    </div>
+</div>
+    <!--        笔记栏目-->
+    <div class="note" id="29">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

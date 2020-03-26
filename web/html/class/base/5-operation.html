@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+    <div class="course-inner">
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_save"><i class="layui-icon layui-icon-left"></i>C 存储类</a>
+            <a class="nav-font-next" href="/page_judge">C 判断<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+        <div class="course-main">
+            <div>
+                <h1>C <span class="course-main-h1">运算符</span></h1>
+                <p>运算符是一种告诉编译器执行特定的数学或逻辑操作的符号。C 语言内置了丰富的运算符，并提供了以下类型的运算符：</p>
+                <ul>
+                    <li>算术运算符</li>
+                    <li>关系运算符</li>
+                    <li>逻辑运算符</li>
+                    <li>位运算符</li>
+                    <li>赋值运算符</li>
+                    <li>杂项运算符</li>
+                </ul>
+                <p>本章将逐一介绍算术运算符、关系运算符、逻辑运算符、位运算符、赋值运算符和其他运算符。</p>
+                <hr class="layui-bg-gray">
+
+                <h2>算术运算符</h2>
+                <p>下表显示了 C 语言支持的所有算术运算符。假设变量 <b>A</b> 的值为 10，变量 <b>B</b> 的值为 20，则：</p>
+                <table class="layui-table">
+                    <tbody>
+                    <tr>
+                        <th>运算符</th>
+                        <th>描述</th>
+                    </tr>
+                    <tr>
+                        <td>+</td>
+                        <td>把两个操作数相加</td>
+                        <td> A + B 将得到 30</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>从第一个操作数中减去第二个操作数</td>
+                        <td> A - B 将得到 -10</td>
+                    </tr>
+                    <tr>
+                        <td>*</td>
+                        <td>把两个操作数相乘</td>
+                        <td> A * B 将得到 200</td>
+                    </tr>
+                    <tr>
+                        <td>/</td>
+                        <td>分子除以分母</td>
+                        <td> B / A 将得到 2</td>
+                    </tr>
+                    <tr>
+                        <td>%</td>
+                        <td>取模运算符，整除后的余数</td>
+                        <td> B % A 将得到 0</td>
+                    </tr>
+                    <tr>
+                        <td>++</td>
+                        <td>自增运算符，整数值增加 1</td>
+                        <td> A++ 将得到 11</td>
+                    </tr>
+                    <tr>
+                        <td>--</td>
+                        <td>自减运算符，整数值减少 1</td>
+                        <td> A-- 将得到 9</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h3>实例</h3>
+                <p>请看下面的实例，了解 C 语言中所有可用的算术运算符：</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>int <span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">21</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">b</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">10</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;+&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 1 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;-&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 2 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;*&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 3 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 4 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;%&nbsp;&nbsp;<span class="code-blue">b</span>;</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 5 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;++;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">// 赋值后再加 1 ，c 为 21，a 为 22</span></p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 6 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">c</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;--;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">// 赋值后再减 1 ，c 为 22 ，a 为 21</span></p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"Line 7 - c 的值是 %d\n"</span>,&nbsp;&nbsp;<span class="code-blue">c</span> );</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">1</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">31</span></p>
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">2</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">11</span></p>
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">3</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">210</span></p>
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">4</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">2</span></p>
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">5</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">1</span></p>
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">6</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">21</span></p>
+                        <p><span class="code-violet">Line</span>&nbsp;&nbsp;<span class="code-blue">7</span>&nbsp;&nbsp;-&nbsp;&nbsp;的值是&nbsp;&nbsp;<span class="code-blue">22</span></p>
+                    </div>
+                </blockquote>
+                <hr class="layui-bg-gray">
+            </div>
+        </div>
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_save"><i class="layui-icon layui-icon-left"></i>C 存储类</a>
+            <a class="nav-font-next" href="/page_judge">C 判断<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+    </div>
+</div>
+    <!--        笔记栏目-->
+    <div class="note" id="10">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

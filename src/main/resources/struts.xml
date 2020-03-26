@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <include file="com/wj/config/struts/UserStruts.xml"/>
+    <include file="com/wj/config/struts/PageStruts.xml"/>
+    <include file="com/wj/config/struts/NoteStruts.xml"/>
+    <include file="com/wj/config/struts/BookStruts.xml"/>
+</struts>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>添加笔记</title>
+    <link href="../../assets/layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+
+<form action="/note_noteAdd" method="post" class="layui-form">
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="float: left">文字内容</label>
+        <div class="layui-input-block">
+            <textarea name="font" placeholder="请输入文字内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label" style="float: left">代码内容</label>
+        <div class="layui-input-block">
+            <textarea name="code" placeholder="请输入代码内容" class="layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="submitNote">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+    <input type="text" name="courseId" id="courseId" hidden>
+</form>
+
+<script src="../../assets/layui/layui.js"></script>
+<script>
+    layui.use('form', function () {
+        let form = layui.form;
+        let $ = layui.$;
+
+        let getRequestParams = function(param){
+            let reg = new RegExp("(^|&)" + param + "=([^&]*)(&|$)", "i");
+            let r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        };
+        let courseId = getRequestParams("courseId");
+
+        document.getElementById('courseId').value = courseId;
+
+        //监听提交按钮点击事件
+        form.on('submit(submitNote)', function(){
+            //获取当前iframe的index
+            let index = parent.layer.getFrameIndex(window.name);
+            //当点击提交后关闭当前iframe页
+            parent.layer.close(index);
+        });
+    })
+</script>
+</body>
+</html>

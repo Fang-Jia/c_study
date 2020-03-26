@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑用户信息</title>
+    <link href="../../assets/layui/css/layui.css" rel="stylesheet">
+</head>
+<body>
+<form action="/user_editUser" method="post" class="layui-form form">
+    <div class="layui-form-item">
+        <label class="layui-form-label">ID</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="uid" id="uid">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="username" id="username">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" name="password" id="password">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input type="email" class="layui-input" name="email" id="email">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-bg-blue" lay-submit lay-filter="save">保存</button>
+        </div>
+    </div>
+</form>
+
+<script src="../../assets/layui/layui.js"></script>
+<script>
+    layui.use(['form'], function () {
+        let form = layui.form;
+        let $ = layui.$;
+
+        form.render();
+
+        $.ajax({
+            type: 'get',
+            url: '/user_userInfo',
+            success: function (data) {
+                document.getElementById('uid').value = data.data[0].uid;
+                document.getElementById('username').value = data.data[0].username;
+                document.getElementById('password').value = data.data[0].password;
+                document.getElementById('email').value = data.data[0].email;
+            }
+        });
+
+        //监听提交按钮点击事件
+        form.on('submit(save)', function(){
+            //获取当前iframe的index
+            let index = parent.layer.getFrameIndex(window.name);
+            //当点击提交后关闭当前iframe页
+            parent.layer.close(index);
+        });
+
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ch-ZN">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <link href="../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../assets/css/nav/nav.css" rel="stylesheet">
+</head>
+<body>
+<!--    导航栏-->
+<div class="layui-row">
+    <ul class="layui-nav layui-bg-blue top" style="width: 100%">
+        <li class="layui-nav-item layui-col-md-offset1"><a href="/page_main">首页</a></li>
+        <li class="layui-nav-item "><a href="/page_curriculum">精品课程</a></li>
+        <li class="layui-nav-item "><a href="/page_project">项目展示</a></li>
+        <li class="layui-nav-item "><a href="/page_skill">实用技术</a></li>
+        <li class="layui-nav-item "><a href="/book_home">实用书籍</a></li>
+    </ul>
+</div>
+<table id="user" lay-filter="userEvent"></table>
+
+<script type="text/html" id="tool">
+    <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="detail">查看标签</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit" id="edit">编辑</a>
+</script>
+
+<script src="../../assets/layui/layui.js"></script>
+<script>
+    layui.use(['table','layer'], function () {
+        let table = layui.table;
+        let layer = layui.layer;
+        let $ = layui.$;
+
+        table.render({
+            elem: '#user',
+            url: '/user_userInfo',
+            skin: 'row',    //开启列边框样式
+            even: true,     //设置表格开启隔行背景
+            size: 'lg',     //设置表格的尺寸
+            cols: [[
+                {field:'uid',title:'ID',align: 'center'},
+                {field:'username',title:'账户', align: 'center'},
+                {field:'password',title:'密码', align: 'center'},
+                {field:'email',title:'邮箱', align: 'center'},
+                {field:'count',title:'标签数', align: 'center'},
+                {fixed:'right',title:'操作',toolbar: '#tool', align: 'center'},
+            ]]
+        });
+
+    //    监听行工具栏点击事件
+        table.on('tool(userEvent)', function (obj) {
+            let data = obj.data;  //当前行数据
+            let event = obj.event;  //获得lay-event事件名
+
+            if (event === 'detail'){
+                layer.open({
+                    title: '个人笔记',
+                    type: 2,
+                    content: '/note_noteInfoByName',
+                    skin: 'layui-layer-lan',
+                    area: ['700px','700px'],
+                    shade: 0.3,
+                    shadeClose: true
+                });
+            }else if (event === 'edit'){
+                layer.open({
+                    title: '个人信息编辑',
+                    type: 2,
+                    area: ['700px','400px'],
+                    skin: 'layui-layer-lan',
+                    content: '/user_edit',
+                    end: function () {
+                        table.reload('user')
+                    }
+                })
+            }
+        })
+
+    })
+</script>
+</body>
+</html>

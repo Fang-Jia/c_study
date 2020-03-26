@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+    <div class="course-inner">
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_arr"><i class="layui-icon layui-icon-left"></i>C 数组</a>
+            <a class="nav-font-next" href="/page_pointer">C 指针<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+        <div class="course-main">
+            <div>
+                <h1>C <span class="course-main-h1">枚举</span></h1>
+                <p>枚举是 C 语言中的一种基本数据类型，它可以让数据更简洁，更易读。</p>
+                <p>枚举语法定义格式为：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p>enum　枚举名　{枚举元素1,枚举元素2,……};</p>
+                    </div>
+                </blockquote>
+                <p>接下来我们举个例子，比如：一星期有 7 天，如果不用枚举，我们需要使用 #define 来为每个整数定义一个别名：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">MON</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">1</span></p>
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">TUE</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">2</span></p>
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">WED</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">3</span></p>
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">THU</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">4</span></p>
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">TFRI</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">5</span></p>
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">SAT</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">6</span></p>
+                        <p>#define&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">SUN</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-violet">7</span></p>
+                    </div>
+                </blockquote>
+                <p>这个看起来代码量就比较多，接下来我们看看使用枚举的方式：</p>
+                <blockquote class="layui-elem-quote code">
+                    <div class="code-div">
+                        <p>enum DAY</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;MON=1, TUE, WED, THU, FRI, SAT, SUN</p>
+                        <p>};</p>
+                    </div>
+                </blockquote>
+                <p>这样看起来是不是更简洁了。</p>
+                <p><strong>注意：</strong>第一个枚举成员的默认值为整型的 0，后续枚举成员的值在前一个成员上加 1。我们在这个实例中把第一个枚举成员的值定义为 1，第二个就为 2，以此类推。</p>
+                <hr class="layui-bg-gray">
+
+                <h2>枚举变量的定义</h2>
+                <p>前面我们只是声明了枚举类型，接下来我们看看如何定义枚举变量。</p>
+                <p>我们可以通过以下三种方式来定义枚举变量</p>
+                <ul>
+                    <li><b>先定义枚举类型，再定义枚举变量</b></li>
+                    <li><b>定义枚举类型的同时定义枚举变量</b></li>
+                    <li><b>省略枚举名称，直接定义枚举变量</b></li>
+                </ul>
+                <p> 在C 语言中，枚举类型是被当做 int 或者 unsigned int 类型来处理的，所以按照 C 语言规范是没有办法遍历枚举类型的。</p>
+                <p>不过在一些特殊的情况下，枚举类型必须连续是可以实现有条件的遍历。</p>
+                <hr class="layui-bg-gray">
+
+                <h2>将整数转换为枚举</h2>
+                <p>以下实例将整数转换为枚举：</p>
+                <blockquote class="layui-elem-quote code">
+                    <p style="color:#617f10;">实例</p>
+                    <hr class="layui-bg-cyan">
+                    <div class="code-div">
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                        <p>#include &nbsp;<span class="code-brown">&lt;stdlib.h></span></p>
+                        <p>int <span class="code-blue">main</span>()</p>
+                        <p>{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;&nbsp;<span class="code-blue">day</span></p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">saturday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">sunday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">monday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">tuesday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">wednesday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">thursday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">friday</span>,</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">workday</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">a</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">1</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;enum&nbsp;&nbsp;<span class="code-blue">day</span>&nbsp;&nbsp;<span class="code-blue">weekend</span>;</p>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">weekend</span>&nbsp;&nbsp;=&nbsp;&nbsp;(enum&nbsp;&nbsp;<span class="code-blue">day</span>&nbsp;&nbsp;)&nbsp;&nbsp;<span class="code-blue">a</span>;&nbsp;&nbsp;&nbsp;&nbsp;//类型转换</p>
+                        <p><span class="code-blue">printf</span>(<span class="code-brown">"weekend:%d"</span>,&nbsp;&nbsp;<span class="code-blue">weekend</span>);</p>
+                        <p><span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+
+            </div>
+        </div>
+        <div class="layui-row nav">
+            <a class="nav-font-pre" href="/page_arr"><i class="layui-icon layui-icon-left"></i>C 数组</a>
+            <a class="nav-font-next" href="/page_pointer">C 指针<i class="layui-icon layui-icon-right"></i></a>
+        </div>
+    </div>
+</div>
+    <!--        笔记栏目-->
+    <div class="note" id="16">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wj.entity.ShopCart" table="t_shop_cart">
+        <id name="cartId" column="cart_id">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="shop_name"/>
+        <property name="shopId" column="shop_id"/>
+        <property name="addTime" column="add_time"/>
+    </class>
+</hibernate-mapping>

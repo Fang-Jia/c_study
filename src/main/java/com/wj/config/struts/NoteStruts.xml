@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="note" namespace="/" extends="struts-default,json-default">
+
+        <!--        声明拦截器-->
+        <interceptors>
+            <interceptor name="LoginInterceptor" class="com.wj.interceptor.LoginInterceptor"/>
+        </interceptors>
+
+        <action name="note_*" class="noteAction" method="{1}">
+
+            <!--            使用拦截器-->
+            <interceptor-ref name="LoginInterceptor"/>
+
+            <interceptor-ref name="defaultStack"/>
+
+            <result name="loginPage" type="redirect">/html/login.jsp</result>
+
+            <result name="note">/html/note/note_add.html</result>
+
+            <result name="noteInfo">/html/note/note_info.jsp</result>
+
+            <result name="success" type="json">
+                <param name="root">map</param>
+            </result>
+
+        </action>
+
+    </package>
+</struts>

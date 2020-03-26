@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_str"><i class="layui-icon layui-icon-left"></i>C 字符串</a>
+                <a class="nav-font-next" href="/page_share">C 共用体<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">结构体</span></h1>
+                    <p>C 数组允许定义可存储相同类型数据项的变量，<b>结构</b>是 C 编程中另一种用户自定义的可用的数据类型，它允许您存储不同类型的数据项。</p>
+                    <p>结构用于表示一条记录，假设您想要跟踪图书馆中书本的动态，您可能需要跟踪每本书的下列属性：</p>
+                    <ul>
+                        <li>Title</li>
+                        <li>Author</li>
+                        <li>Subject</li>
+                        <li>Book ID</li>
+                    </ul>
+                    <hr class="layui-bg-gray">
+
+                    <h2>定义结构</h2>
+                    <p>为了定义结构，您必须使用 <b>struct</b> 语句。struct 语句定义了一个包含多个成员的新的数据类型，struct 语句的格式如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct <span class="code-blue">tag</span> {</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">member-list</span></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">member-list</span></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">member-list</span></p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">. . .</span></p>
+                            <p>} <span class="code-blue">variable-list</span>;</p>
+                        </div>
+                    </blockquote>
+                    <p><b>tag</b> 是结构体标签。</p>
+                    <p><b>member-list</b> 是标准的变量定义，比如 int i; 或者 float f，或者其他有效的变量定义。</p>
+                    <p><b>variable-list</b> 结构变量，定义在结构的末尾，最后一个分号之前，您可以指定一个或多个结构变量。下面是声明 Book 结构的方式：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct <span class="code-blue">Books</span> {</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">title</span>[<span class="code-violet">50</span>]</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">author</span>[<span class="code-violet">50</span>]</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">subject</span>[<span class="code-violet">100</span>]</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">book_id</span>;</p>
+                            <p>} <span class="code-blue">book</span>;</p>
+                        </div>
+                    </blockquote>
+                    <p>在一般情况下，<strong>tag、member-list、variable-list</strong> 这 3 部分至少要出现 2 个</p>
+                    <p>结构体的成员可以包含其他结构体，也可以包含指向自己结构体类型的指针，而通常这种指针的应用是为了实现一些更高级的数据结构如链表和树等。</p>
+                    <p>如果两个结构体互相包含，则需要对其中一个结构体进行不完整声明。</p>
+                    <hr>
+
+                    <h2>结构体变量的初始化</h2>
+                    <p>和其它类型变量一样，对结构体变量可以在定义时指定初始值。</p>
+                    <hr>
+
+                    <h2>访问结构成员</h2>
+                    <p>为了访问结构的成员，我们使用<b>成员访问运算符（.）</b>。成员访问运算符是结构变量名称和我们要访问的结构成员之间的一个句号。您可以使用 <b>struct</b> 关键字来定义结构类型的变量。</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>结构作为函数参数</h2>
+                    <p>您可以把结构作为函数参数，传参方式与其他类型的变量或指针类似。您可以使用上面实例中的方式来访问结构变量：</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>指向结构的指针</h2>
+                    <p>您可以定义指向结构的指针，方式与定义指向其他类型变量的指针相似，如下所示：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct Books *struct_pointer;</p>
+                        </div>
+                    </blockquote>
+                    <p>现在，您可以在上述定义的指针变量中存储结构变量的地址。为了查找结构变量的地址，请把 &amp; 运算符放在结构名称的前面，如下所示：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct_pointer = & Book1;</p>
+                        </div>
+                    </blockquote>
+                    <p>为了使用指向该结构的指针访问结构的成员，您必须使用 -&gt; 运算符，如下所示：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>struct_pointer->title;</p>
+                        </div>
+                    </blockquote>
+                    <hr class="layui-bg-gray">
+
+                    <h2>位域</h2>
+                    <p>有些信息在存储时，并不需要占用一个完整的字节，而只需占几个或一个二进制位。例如在存放一个开关量时，只有 0 和 1 两种状态，用 1 位二进位即可。为了节省存储空间，并使处理简便，C 语言又提供了一种数据结构，称为"位域"或"位段"。</p>
+                    <p>所谓"位域"是把一个字节中的二进位划分为几个不同的区域，并说明每个区域的位数。每个域有一个域名，允许在程序中按域名进行操作。这样就可以把几个不同的对象用一个字节的二进制位域来表示。</p>
+                    <p>典型的实例：</p>
+                    <ul>
+                        <li>用 1 位二进位存放一个开关量时，只有 0 和 1 两种状态。</li>
+                        <li>读取外部文件格式——可以读取非标准的文件格式。例如：9 位的整数。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_str"><i class="layui-icon layui-icon-left"></i>C 字符串</a>
+                <a class="nav-font-next" href="/page_share">C 共用体<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="20">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

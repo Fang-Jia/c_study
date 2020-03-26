@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    overflow-x: hidden;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Noto Sans CJK SC,WenQuanYi Micro Hei,Arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: #f6f6f6 url(https://www.runoob.com/wp-content/themes/runoob/assets/img/bg.gif) no-repeat;
+    color: #333;
+}
+
+/*侧边导航栏区域样式=====================================================================*/
+.curriculum-main{
+    height: 2390px;
+    margin-top: 20px;
+}
+.title{
+    line-height: 35px;
+    font-size: 25px;
+    margin-bottom: 5px;
+    padding: 4px;
+    opacity: .7;
+    color: grey;
+    border: 1px solid rgba(0,0,0,.1);
+    background-color: #f2f2f2;
+    background-image: -webkit-linear-gradient(bottom,rgba(0,0,0,.05) -17%,rgba(255,255,255,.05) 117%);
+}
+.curriculum{
+    height: 1170px;
+    background-color: white;
+    width: 14%;
+    display: block;
+    float: left;
+}
+.curriculum-li a{
+    display: block;
+    padding: 4px;
+    border-bottom: 1px solid #efefef;
+}
+.curriculum-li{
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    text-align: left;
+}
+.curriculum-li dd a{
+    height: 25px;
+    line-height: 25px;
+    color: 	#8E8E8E;
+    font-size: 18px;
+}
+.curriculum-a{
+    background-color: rgb(150, 185, 125) !important;
+    font-weight: bold;
+    color: rgb(255, 255, 255) !important;
+}
+.curriculum-li dd:hover a{
+    color: #000;
+}
+
+/*主体内容区域样式===================================================================*/
+.body{
+    margin-left: 23%;
+    width: 86%;
+    height: 100%;
+}
+

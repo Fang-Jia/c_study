@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.wj.entity.Book" table="t_book">
+        <id name="bid" column="bid">
+            <generator class="native"/>
+        </id>
+        <property name="bookTitle" column="book_title"/>
+        <property name="bookImg" column="book_img"/>
+        <property name="price" column="price"/>
+        <property name="addTime" column="add_time"/>
+
+        <set name="orderSet" table="order_book">
+            <key column="book_id"/>
+            <many-to-many class="com.wj.entity.Order" column="order_id"/>
+        </set>
+    </class>
+</hibernate-mapping>

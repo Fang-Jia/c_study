@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_environment"><i class="layui-icon layui-icon-left"></i>C 环境设置</a>
+                <a class="nav-font-next" href="/page_grammar">C 基本语法<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">程序结构</span></h1>
+                    <p>在我们学习 C 语言的基本构建块之前，让我们先来看看一个最小的 C 程序结构，在接下来的章节中可以以此作为参考。</p>
+                    <hr class="layui-bg-gray">
+
+                    <h2>C Hello World 实例</h2>
+                    <p>C 程序主要包括以下部分：</p>
+                    <ul>
+                        <li>预处理器指令</li>
+                        <li>函数</li>
+                        <li>变量</li>
+                        <li>语句 & 表达式</li>
+                        <li>注释</li>
+                    </ul>
+                    <p>让我们看一段简单的代码，可以输出单词 "Hello World"：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>/*  我的第一个 C 程序 */</p>
+                            <p><span class="code-blue">printf</span>(<span class="code-brown">" Hello, World! &nbsp;\n"</span>);</p>
+                            <p><span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                        </div>
+
+                    </blockquote>
+                    <p>接下来我们讲解一下上面这段程序：</p>
+                    <ol>
+                        <li>程序的第一行 <i>#include &lt;stdio.h></i> 是预处理器指令，告诉 C 编译器在实际编译之前要包含 stdio.h 文件。</li>
+                        <li>下一行 <i>int main()</i> 是主函数，程序从这里开始执行。</li>
+                        <li>下一行 /*...*/ 将会被编译器忽略，这里放置程序的注释内容。它们被称为程序的注释。</li>
+                        <li>下一行 <i>printf(...)</i> 是 C 中另一个可用的函数，会在屏幕上显示消息 "Hello, World!"。</li>
+                        <li>下一行 <b>return 0;</b> 终止 main() 函数，并返回值 0。</li>
+                    </ol>
+                    <hr class="layui-bg-gray">
+
+                    <h2>编译 & 执行 C 程序</h2>
+                    <p>接下来让我们看看如何把源代码保存在一个文件中，以及如何编译并运行它。下面是简单的步骤：</p>
+                    <ol>
+                        <li>打开一个文本编辑器，添加上述代码。</li>
+                        <li>保存文件为 <i>hello.c</i>。</li>
+                        <li>打开命令提示符，进入到保存文件所在的目录。</li>
+                        <li>键入 <i>gcc hello.c</i>，输入回车，编译代码。</li>
+                        <li>如果代码中没有错误，命令提示符会跳到下一行，并生成 <i>a.out</i> 可执行文件。</li>
+                        <li>现在，键入 <i>a.out</i> 来执行程序。</li>
+                        <li>您可以看到屏幕上显示 <i>"Hello World"</i>。</li>
+                    </ol>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>$ gcc hello.c</p>
+                            <p>$ ./a.out</p>
+                            <p><span class="code-violet">Hello, World!</span></p>
+                        </div>
+                    </blockquote>
+                    <p>请确保您的路径中已包含 gcc 编译器，并确保在包含源文件 hello.c 的目录中运行它。</p>
+                    <p>如果是多个 c 代码的源码文件，编译方法如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>$ gcc test1.c test2.c -o main.out</p>
+                            <p>$ ./main.out</p>
+                        </div>
+                    </blockquote>
+                    <p>test1.c 与 test2.c 是两个源代码文件。</p>
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_environment"><i class="layui-icon layui-icon-left"></i>C 环境设置</a>
+                <a class="nav-font-next" href="/page_grammar">C 基本语法<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="4">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>

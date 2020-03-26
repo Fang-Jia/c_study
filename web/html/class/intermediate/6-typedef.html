@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../../../assets/layui/css/layui.css" rel="stylesheet">
+    <link href="../../../assets/css/class/course.css" rel="stylesheet">
+</head>
+<body>
+    <div class="course">
+        <div class="course-inner">
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_place"><i class="layui-icon layui-icon-left"></i>C 位域</a>
+                <a class="nav-font-next" href="/page_input">C 输入&输出<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+            <div class="course-main">
+                <div>
+                    <h1>C <span class="course-main-h1">typedef</span></h1>
+                    <p>C 语言提供了 <b>typedef</b> 关键字，您可以使用它来为类型取一个新的名字。下面的实例为单字节数字定义了一个术语 <b>BYTE</b>：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>typedef unsigned char BYTE;</p>
+                        </div>
+                    </blockquote>
+                    <p>在这个类型定义之后，标识符 BYTE 可作为类型 <b>unsigned char</b> 的缩写，例如：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>BYTE  b1, b2;</p>
+                        </div>
+                    </blockquote>
+                    <p>按照惯例，定义时会大写字母，以便提醒用户类型名称是一个象征性的缩写，但您也可以使用小写字母，如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>typedef unsigned char byte;</p>
+                        </div>
+                    </blockquote>
+                    <p>您也可以使用 <b>typedef</b> 来为用户自定义的数据类型取一个新的名字。例如，您可以对结构体使用 typedef 来定义一个新的数据类型名字，然后使用这个新的数据类型来直接定义结构变量，如下：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>#include &nbsp;<span class="code-brown">&lt;string.h></span></p>
+                            <p>typedef struct <span class="code-blue">Books</span></p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">title</span>[<span class="code-violet">50</span>];</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">author</span>[<span class="code-violet">50</span>];</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;char&nbsp;&nbsp;<span class="code-blue">subject</span>[<span class="code-violet">100</span>];</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;&nbsp;<span class="code-blue">book_id</span>;</p>
+                            <p>} <span class="code-blue">Book</span>;</p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">Book book</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">strcpy</span>(<span class="code-blue">book.title</span>, <span class="code-violet">"C 教程"</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">strcpy</span>(<span class="code-blue">book.author</span>, <span class="code-violet">"Runoob"</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">strcpy</span>(<span class="code-blue">book.subject</span>, <span class="code-violet">"编程语言"</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">book.book_id</span>&nbsp;&nbsp;=&nbsp;&nbsp;<span class="code-violet">12345</span>;</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"书标题 : %s\n"</span>, <span class="code-blue">book.title</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"书作者 : %s\n"</span>, <span class="code-blue">book.author</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"书类目 : %s\n"</span>, <span class="code-blue">book.subject</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"书 ID : %d\n"</span>, <span class="code-blue">book.book_id</span>);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <div class="code-div">
+                            <p>书标题 : C 教程</p>
+                            <p>书作者 : Runoob</p>
+                            <p>书类目 : 编程语言</p>
+                            <p>书 ID : 12345</p>
+                        </div>
+                    </blockquote>
+                    <hr class="layui-bg-gray">
+
+                    <h2>typedef vs #define</h2>
+                    <p><b>#define</b> 是 C 指令，用于为各种数据类型定义别名，与 <b>typedef</b> 类似，但是它们有以下几点不同：</p>
+                    <ul>
+                        <li><b>typedef</b> 仅限于为类型定义符号名称，<b>#define</b> 不仅可以为类型定义别名，也能为数值定义别名，比如您可以定义 1 为 ONE。</li>
+                        <li><b>typedef</b> 是由编译器执行解释的，<b>#define</b> 语句是由预编译器进行处理的。</li>
+                    </ul>
+                    <p>下面是 #define 的最简单的用法：</p>
+                    <blockquote class="layui-elem-quote code">
+                        <p style="color:#617f10;">实例</p>
+                        <hr class="layui-bg-cyan">
+                        <div class="code-div">
+                            <p>#include &nbsp;<span class="code-brown">&lt;stdio.h></span></p>
+                            <p>#define TRUE  1</p>
+                            <p>#define FALSE 0</p>
+                            <p>int <span class="code-blue">main</span>()</p>
+                            <p>{</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"TRUE 的值: %d\n"</span>, TRUE);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-blue">printf</span>(<span class="code-brown">"FALSE 的值: %d\n"</span>, FALSE);</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-green">return</span> <span class="code-brown">0</span>;</p>
+                            <p>}</p>
+                        </div>
+                    </blockquote>
+                    <p>当上面的代码被编译和执行时，它会产生下列结果：</p>
+                    <p>TRUE 的值: 1</p>
+                    <p>FALSE 的值: 0</p>
+
+                </div>
+            </div>
+            <div class="layui-row nav">
+                <a class="nav-font-pre" href="/page_place"><i class="layui-icon layui-icon-left"></i>C 位域</a>
+                <a class="nav-font-next" href="/page_input">C 输入&输出<i class="layui-icon layui-icon-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <!--        笔记栏目-->
+    <div class="note" id="23">
+        <div class="layui-btn layui-btn-warm note-info" style="float:left;">查看笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-read"></i></div>
+        <div class="layui-btn layui-btn-warm note-add" style="float:right;">写笔记&nbsp;&nbsp;<i class="layui-icon layui-icon-note"></i></div>
+    </div>
+
+    <script src="../../../assets/layui/layui.js"></script>
+    <script src="../../../assets/js/class/course.js"></script>
+</body>
+</html>
